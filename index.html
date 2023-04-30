@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <!--------- <title>Responsive Navigation Menu</title>------>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        body{
+            padding-top: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        
+
+
+        nav {
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background: #000000;
+            align-items: center;
+            justify-content: space-between;
+            /* padding: 0 50px 0 100px; */
+            flex-wrap: wrap;
+            position: fixed;
+            top: 0px;
+            padding: 22px;
+            
+        }
+
+        nav .logo {
+            color: #fff;
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: #f2f2f2;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a.active,
+        nav ul li a:hover {
+            color: #111;
+            background: #fff;
+        }
+
+        nav .menu-btn i {
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            display: none;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        @media (max-width: 1000px) {
+            nav {
+                padding: 0 40px 0 50px;
+            }
+        }
+
+        @media (max-width: 920px) {
+            nav .menu-btn i {
+                display: block;
+            }
+
+            #click:checked~.menu-btn i:before {
+                content: "\f00d";
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: #111;
+                height: 100vh;
+                width: 100%;
+                text-align: center;
+                display: block;
+                transition: all 0.3s ease;
+            }
+
+            #click:checked~ul {
+                left: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                margin: 40px 0;
+            }
+
+            nav ul li a {
+                width: 100%;
+                margin-left: -100%;
+                display: block;
+                font-size: 20px;
+                transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+
+            #click:checked~ul li a {
+                margin-left: 0px;
+            }
+
+            nav ul li a.active,
+            nav ul li a:hover {
+                background: none;
+                color: cyan;
+            }
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: -1;
+            width: 100%;
+            padding: 0 30px;
+            color: #1b1b1b;
+        }
+
+        .content div {
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: #e05df7;
+        }
+
+        .glow-on-hover {
+            width: 66px;
+            height: 30px;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            top: -1px;
+            left: 1px;
+            z-index: 0;
+            border-radius: 10px;
+        }
+
+        .glow-on-hover:before {
+            content: '';
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .glow-on-hover:active {
+            color: #000
+        }
+
+        .glow-on-hover:active:after {
+            background: transparent;
+        }
+
+        .glow-on-hover:hover:before {
+            opacity: 1;
+        }
+
+        .glow-on-hover:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+
+
+
+        .glow-on-hover2 {
+            width: 45px;
+            height: 30px;
+            border: none;
+            outline: none;
+            color: #fff;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            top: -1px;
+            left: 4px;
+            z-index: 0;
+            border-radius: 10px;
+        }
+
+        .glow-on-hover2:before {
+            content: '';
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .glow-on-hover2:active {
+            color: #000
+        }
+
+        .glow-on-hover2:active:after {
+            background: transparent;
+        }
+
+        .glow-on-hover2:hover:before {
+            opacity: 1;
+        }
+
+        .glow-on-hover2:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .container {
+            /* border: 2px solid red;
+            height: 100vh;
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+            text-align: center; */
+
+
+
+        }
+
+        .item {
+
+            width: 150px;
+            height: 300px;
+            background-color: whitesmoke;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 13px -5px 20px 0px black;
+            text-align: center;
+            /* display: inline-block; */
+            /* position: absolute; */
+
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            /* border-radius: 3px; */
+            /* border: 2px solid rgb(255, 0, 247); */
+            /* margin: 10px; */
+            /* padding: 3px; */
+
+
+
+            /* border: 2px solid red;
+            margin: 12px;
+            padding: 22px;
+            display: inline-block;
+            position: absolute;
+            /* justify-content: center;
+            align-items: center; */
+            /* height: 80px;
+            width: 80px */
+        }
+
+        @media (800px <=width) {
+            .item {
+                margin: 75px;
+                display: inline-block;
+                align-items: self-end;
+                position: relative;
+                bottom: -265px;
+            }
+        }
+
+        @media(590px <=width <=600px) {
+            .item {
+                /* display: flex; */
+                float: left;
+                margin: auto;
+                position: relative;
+                top: 692px;
+                /* justify-item: space-evenly; */
+                margin: 69px;
+
+
+            }
+        }
+
+        @media(width <=590px) {
+            .item {
+                /* display: flex; */
+                float: left;
+                margin: auto;
+                position: relative;
+                top: 692px;
+                /* justify-item: space-evenly; */
+                margin: 68px;
+
+
+            }
+        }
+
+        @media(370px <=width <=590px) {
+            .item {
+                /* display: flex; */
+                float: left;
+                margin: auto;
+                position: relative;
+                top: 692px;
+                /* justify-item: space-evenly; */
+                margin: 18px;
+
+
+            }
+        }
+
+        @media(200px <=width <=370px) {
+            .item {
+                /* display: flex; */
+                /* float: left; */
+                margin: auto;
+                position: relative;
+                top: 885px;
+                margin: 14px;
+                left: 55px;
+
+
+            }
+        }
+
+
+
+        #item-1 {
+            /* top: 387px;
+            left: 374px; */
+        }
+
+        img {
+            max-width: 100%;
+            position: relative;
+        }
+
+        .about-1x {
+            color: rgb(226, 226, 36);
+            margin: 5px;
+            font-size: 21px;
+            font-family: 'Darumadrop One', cursive;
+        }
+
+        .about-1xx {
+            font-size: 10px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            padding: 11px;
+        }
+
+        .btn {
+            /* background-color: white; */
+            color: #14f7ff;
+            border-radius: 4px;
+            position: relative;
+            height: 27px;
+            left: -1px;
+            top: 7px;
+            font-size: 13px;
+            border: none;
+            background: rgb(63, 94, 251);
+            background: linear-gradient(323deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+            font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+        }
+
+        .btn2 {
+            color: #14f7ff;
+            border-radius: 4px;
+            position: relative;
+            height: 27px;
+            left: 2px;
+            top: 7px;
+            font-size: 13px;
+            border: none;
+            background: rgb(63, 94, 251);
+            background: linear-gradient(323deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+            font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+
+        }
+
+
+
+        #item-2 {
+            /* top: 387px;
+            left: 44px; */
+        }
+
+        .about-2 {
+            width: 67px;
+            height: 84px;
+            position: relative;
+            top: 1px;
+            left: 50px;
+        }
+
+        .about-2x {
+            font-size: 10px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            position: relative;
+            top: -42px;
+
+        }
+
+        .about-2xx {
+            padding: 2px;
+        }
+
+        #item-3 {
+            /* top: 387px;
+    right: 374px; */
+        }
+
+        .about-3y {
+            position: relative;
+            top: 22px;
+        }
+
+        .about-3 {
+            position: relative;
+            top: 15px;
+        }
+
+        .about-3x {
+            font-size: 10.6px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            position: relative;
+            top: 13px;
+        }
+
+        .about-3xx {
+            position: relative;
+            top: 14px;
+            padding: 15px;
+
+        }
+
+        #item-4 {
+            /* top: 387px;
+    left: 665.5px; */
+        }
+
+        .about-4y {
+            height: 99px;
+            width: 101px;
+            position: relative;
+            left: 25px;
+        }
+
+        .about-4 {
+            padding: 1px;
+        }
+
+        .about-4x {
+            font-size: 7.9px;
+        }
+
+        .about-4xx {
+            padding: 17px;
+        }
+
+        #item-5 {
+            /* top: 387px;
+            right: 68px; */
+        }
+
+        .about-5y {
+            height: 103px;
+            width: 111px;
+            position: relative;
+            left: 20px;
+        }
+
+        .about-5 {
+            padding: 11px;
+        }
+
+        .about-5x {
+            font-size: 8.7px;
+        }
+
+        .about-5xx {
+            padding: 6px
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">EXPENSIVE</div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+
+
+
+        <div class="item" id="item-1">
+            <div class="about-1y">
+
+                <img src="/img/istockphoto-1141208525-612x612-removebg-preview.png">
+            </div>
+            <div class="about-1">
+                <div class="about-1x">BLURBIRD</div>
+                <div class="about-1xx">A good quality backpack is durable, comfortable, organized, and versatile. It
+                    should last for years and provide reliable performance for the user.</div>
+                <div class="about-1xxx">₹1999</div>
+                <button class="glow-on-hover" type="button">Buy now</button>
+                <button class="glow-on-hover2" type="button">Add </button>
+            </div>
+        </div>
+        <div class="item" id="item-2">
+            <div class="about-2y">
+
+                <img src="/img/images__1_-removebg-preview.png">
+            </div>
+            <div class="about-2">
+                <img src="/img/pngwing.com.png">
+            </div>
+            <div class="about-2x">Nike shoes are high-quality and stylish footwear with innovative technology, designed
+                for both athletic and casual wear.</div>
+            <div class="about-2xx">₹4000</div>
+            <button class="glow-on-hover" type="button">Buy now</button>
+            <button class="glow-on-hover2" type="button">Add </button>
+        </div>
+        <div class="item" id="item-3">
+            <div class="about-3y">
+
+                <img src="/img/images__2_-removebg-preview.png">
+            </div>
+            <div class="about-3">
+                <img src="/img/pngegg.png">
+            </div>
+            <div class="about-3x">Display: 6.1-inch or 5.4-inch Super Retina XDR display
+                Processor: A15 Bionic chip with 6-core CPU and 5-core GPU
+                Storage: 128GB, 256GB, 512GB, or 1TB of storage
+
+            </div>
+            <div class="about-3xx">₹89,999</div>
+            <button class="glow-on-hover" type="button">Buy now</button>
+            <button class="glow-on-hover2" type="button">Add </button>
+        </div>
+        <div class="item" id="item-4">
+            <div class="about-4y">
+                <img src="/img/download__1_-removebg-preview.png">
+            </div>
+            <div class="about-4">
+                <img src="/img/pngegg.png">
+            </div>
+            <div class="about-4x">
+                Display: 41mm or 45mm always-on Retina display with thinner borders
+                Processor: S7 System in Package (SiP) with 20% faster processing than the previous generation
+                Storage: 32GB of storage
+
+            </div>
+            <div class="about-4xx">₹21,999</div>
+            <button class="glow-on-hover" type="button">Buy now</button>
+            <button class="glow-on-hover2" type="button">Add </button>
+        </div>
+        <div class="item" id="item-5">
+            <div class="about-5y">
+                <img src="/img/images__3_-removebg-preview.png">
+            </div>
+            <div class="about-5">
+                <img src="/img/gucci-logo-49120.png">
+            </div>
+            <div class="about-5x">Gucci t-shirts are often made from premium materials such as 100% cotton, which
+                provides comfort and durability. They come in a variety of styles, including crewneck, V-neck, and polo
+            </div>
+            <div class="about-5xx">₹12,756</div>
+            <button class="glow-on-hover" type="button">Buy now</button>
+            <button class="glow-on-hover2" type="button">Add </button>
+        </div>
+        <!-- <div class="item" id="item-6">Box6</div>
+        <div class="item" id="item-7">Box7</div>
+        <div class="item" id="item-8">Box8</div> -->
+
+    </div>
+</body>
+
+</html>
